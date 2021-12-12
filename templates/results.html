@@ -1,0 +1,45 @@
+{% extends "Bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="../static/styles/searchBar.css">
+</head>
+<body>
+<section>
+
+<h1>Search Engine</h1>
+
+</section>
+
+<!-- The form -->
+<form class="engine" action="" method="POST">
+    {% if form.errors %}
+    {{ form.errors }}
+{% endif %}
+   <fieldset class="form-group">
+       <div class="search">
+           {{form.query(class= "form-control form-control-lg")}}
+       </div>
+       <div class="submit">
+           {{form.search(class="btn btn-outline-info")}}
+       </div>
+   </fieldset>
+</form>
+
+
+</body>
+
+<div>
+    <p class="header">Βρέθηκαν τα εξής για {{query}}</p>
+  </div>
+<div class="pages">
+     {%for i in range(0, len)%}
+
+    <h4><a href ="{{Results[i]}}" target="_blank">{{Results[i]}}</a></h4>
+{%endfor%}
+</div>
+
+</body>
+{% endblock %}
